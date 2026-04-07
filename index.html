@@ -94,6 +94,18 @@
       }
     </script>
 
+    <script>
+      (() => {
+        try {
+          if (localStorage.getItem("ageVerified") !== "true") {
+            document.documentElement.classList.add("age-gate-pending");
+          }
+        } catch {
+          document.documentElement.classList.add("age-gate-pending");
+        }
+      })();
+    </script>
+
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="stylesheet" href="/assets/css/print.css" media="print" />

@@ -59,6 +59,34 @@ body {
   font-family: var(--font-family);
 }
 
+html.age-gate-pending body {
+  overflow: hidden;
+}
+
+html.age-gate-pending body > * {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+html.age-gate-pending #age-verification-modal {
+  visibility: visible !important;
+  pointer-events: auto !important;
+  display: flex !important;
+}
+
+body.age-gate-locked {
+  overflow: hidden;
+}
+
+body.age-gate-locked > *:not(#age-verification-modal) {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+body.age-gate-locked #age-verification-modal {
+  display: flex !important;
+}
+
 /* ─── AGE VERIFICATION ─────────────────────────────────── */
 
 .age-modal {

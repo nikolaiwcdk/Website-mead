@@ -1,6 +1,7 @@
-const revealSelectors = [
-  ".hero-content",
-  ".variant-card",
+const immediateRevealSelectors = [".hero-content"];
+
+const observerRevealSelectors = [
+  ".variants-grid",
   ".collab-card",
   ".about-card",
   ".stat-item",
@@ -8,7 +9,15 @@ const revealSelectors = [
 ];
 
 export function initReveal(prefersReducedMotion) {
-  const targets = document.querySelectorAll(revealSelectors.join(","));
+  const immediateTargets = document.querySelectorAll(
+    immediateRevealSelectors.join(","),
+  );
+
+  const observerTargets = document.querySelectorAll(
+    observerRevealSelectors.join(","),
+  );
+
+  const targets = [...immediateTargets, ...observerTargets];
 
   if (targets.length === 0) {
     return;
@@ -21,6 +30,22 @@ export function initReveal(prefersReducedMotion) {
 
   targets.forEach((element) => element.classList.add("reveal-pending"));
 
+  const revealElement = (element) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        element.classList.add("reveal-visible");
+      });
+    });
+  };
+
+  immediateTargets.forEach((element) => {
+    revealElement(element);
+  });
+
+  if (observerTargets.length === 0) {
+    return;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -28,7 +53,7 @@ export function initReveal(prefersReducedMotion) {
           return;
         }
 
-        entry.target.classList.add("reveal-visible");
+        revealElement(entry.target);
         observer.unobserve(entry.target);
       });
     },
@@ -38,5 +63,5 @@ export function initReveal(prefersReducedMotion) {
     },
   );
 
-  targets.forEach((element) => observer.observe(element));
+  observerTargets.forEach((element) => observer.observe(element));
 }

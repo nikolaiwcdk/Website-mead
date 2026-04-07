@@ -3,14 +3,70 @@ export function initAgeVerification() {
   const form = document.getElementById("age-verification-form");
   const errorMessage = document.getElementById("age-error");
   const birthdateInput = document.getElementById("birthdate");
+  const modalContent = modal?.querySelector(".age-modal-content");
+  const body = document.body;
+  const root = document.documentElement;
+  const LOCK_CLASS = "age-gate-locked";
 
-  // Check if user has already verified age
-  const isAgeVerified = localStorage.getItem("ageVerified");
-
-  if (isAgeVerified) {
-    modal.classList.add("hidden");
+  if (!modal || !form || !errorMessage || !birthdateInput || !body) {
     return;
   }
+
+  const setGateState = (isUnlocked) => {
+    body.classList.toggle(LOCK_CLASS, !isUnlocked);
+    modal.classList.toggle("hidden", isUnlocked);
+    modal.setAttribute("aria-hidden", String(isUnlocked));
+    root.classList.remove("age-gate-pending");
+
+    if (isUnlocked) {
+      modal.style.display = "";
+      if (modalContent) {
+        modalContent.style.display = "";
+      }
+    }
+  };
+
+  const enforceGate = () => {
+    const verified = localStorage.getItem("ageVerified") === "true";
+    if (verified) {
+      return;
+    }
+
+    body.classList.add(LOCK_CLASS);
+    modal.classList.remove("hidden");
+
+    if (modal.style.display === "none") {
+      modal.style.display = "";
+    }
+
+    if (modalContent && modalContent.style.display === "none") {
+      modalContent.style.display = "";
+    }
+  };
+
+  // Check if user has already verified age
+  const isAgeVerified = localStorage.getItem("ageVerified") === "true";
+
+  if (isAgeVerified) {
+    setGateState(true);
+    return;
+  }
+
+  setGateState(false);
+  enforceGate();
+
+  const restoreGate = () => {
+    enforceGate();
+  };
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") {
+      restoreGate();
+    }
+  });
+
+  window.addEventListener("focus", restoreGate);
+  window.addEventListener("pageshow", restoreGate);
 
   // Prevent closing modal by clicking outside or pressing Escape
   modal.addEventListener("click", (e) => {
@@ -28,6 +84,13 @@ export function initAgeVerification() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const birthdate = new Date(birthdateInput.value);
+
+    if (Number.isNaN(birthdate.getTime())) {
+      errorMessage.style.display = "block";
+      birthdateInput.focus();
+      return;
+    }
+
     const today = new Date();
 
     // Calculate age
@@ -43,11 +106,11 @@ export function initAgeVerification() {
 
     if (age >= 18) {
       // Age verified - store in localStorage
-      localStorage.setItem("ageVerified", true);
+      localStorage.setItem("ageVerified", "true");
       localStorage.setItem("ageVerifiedDate", today.toISOString());
 
-      // Hide modal
-      modal.classList.add("hidden");
+      // Unlock site
+      setGateState(true);
 
       // Clear form
       form.reset();
