@@ -3,8 +3,115 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amber Bloom - Made for cozy moments, not heavy drinks</title>
+    <title>
+      Amber Bloom – Modern Mead with Apple & Raspberry | Light & Fresh
+    </title>
+
+    <!-- SEO Meta -->
+    <meta
+      name="description"
+      content="Amber Bloom is a modern mead crafted for cozy moments. Light, fresh and made with 100% natural ingredients. Discover our Apple & Honey and Raspberry & Honey variants."
+    />
+    <meta
+      name="keywords"
+      content="mead, Amber Bloom, apple mead, raspberry mead, honey mead, modern mead, craft mead, light alcohol, Fanø Bryghus, natural ingredients"
+    />
+    <meta name="author" content="Amber Bloom" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://amberbloom.com/" />
+
+    <!-- Open Graph (Facebook / LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://amberbloom.com/" />
+    <meta
+      property="og:title"
+      content="Amber Bloom – Modern Mead with Apple & Raspberry"
+    />
+    <meta
+      property="og:description"
+      content="Light, fresh and made with 100% natural ingredients. Crafted for cozy moments and good company."
+    />
+    <meta
+      property="og:image"
+      content="https://amberbloom.com/assets/img/stemningsbilleder/hyggestemning_billede.webp"
+    />
+    <meta property="og:image:width" content="1152" />
+    <meta property="og:image:height" content="896" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Amber Bloom" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Amber Bloom – Modern Mead with Apple & Raspberry"
+    />
+    <meta
+      name="twitter:description"
+      content="Light, fresh and made with 100% natural ingredients. Crafted for cozy moments and good company."
+    />
+    <meta
+      name="twitter:image"
+      content="https://amberbloom.com/assets/img/stemningsbilleder/hyggestemning_billede.webp"
+    />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Brand",
+        "name": "Amber Bloom",
+        "url": "https://amberbloom.com",
+        "logo": "https://amberbloom.com/assets/img/logo/Logo_RGB_Logo-type_venstrer_navbar.svg",
+        "description": "A modern mead crafted for cozy moments. Light, fresh and made with natural ingredients.",
+        "email": "hello@amberbloom.com",
+        "foundingDate": "2026",
+        "sameAs": [
+          "https://www.facebook.com/amberbloom",
+          "https://www.instagram.com/amberbloom",
+          "https://www.linkedin.com/company/amberbloom"
+        ],
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Apple & Honey Mead",
+              "description": "A fresh and fruity mead with soft honey notes and a smooth finish.",
+              "image": "https://amberbloom.com/assets/img/daser/apple_dase_mockup.webp"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Raspberry & Honey Mead",
+              "description": "A light and fruity mead with soft raspberry notes and a smooth finish.",
+              "image": "https://amberbloom.com/assets/img/daser/raspberry_dase_mockup.webp"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/print.css" media="print" />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      />
+    </noscript>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -26,6 +133,57 @@
     <link rel="manifest" href="assets/favicon/site.webmanifest" />
   </head>
   <body>
+    <!-- Age Verification Modal -->
+    <div
+      id="age-verification-modal"
+      class="age-modal"
+      role="dialog"
+      aria-labelledby="age-modal-title"
+      aria-modal="true"
+    >
+      <div class="age-modal-content">
+        <h2 id="age-modal-title">Age Verification</h2>
+        <p>
+          You must be 18 or older to enter this site. Amber Bloom contains
+          alcohol.
+        </p>
+        <form id="age-verification-form" class="age-form">
+          <label for="birthdate">Enter your date of birth:</label>
+          <input
+            type="date"
+            id="birthdate"
+            name="birthdate"
+            required
+            aria-required="true"
+          />
+          <div class="age-checkbox-group">
+            <label class="age-checkbox-label">
+              <input
+                type="checkbox"
+                id="accept-terms"
+                name="accept-terms"
+                required
+              />
+              I agree to the <a href="#" class="age-link">Terms of Service</a>
+            </label>
+            <label class="age-checkbox-label">
+              <input
+                type="checkbox"
+                id="accept-privacy"
+                name="accept-privacy"
+                required
+              />
+              I agree to the <a href="#" class="age-link">Privacy Policy</a>
+            </label>
+          </div>
+          <button type="submit" class="age-btn-verify">Verify Age</button>
+        </form>
+        <p class="age-error-message" id="age-error" style="display: none">
+          You must be 18 or older to enter.
+        </p>
+      </div>
+    </div>
+
     <header class="site-header">
       <nav class="nav-wrap">
         <!-- Logo -->
@@ -39,14 +197,14 @@
 
         <!-- Desktop links -->
         <ul class="main-nav">
-          <li><a href="#">Variants</a></li>
-          <li><a href="#">Collaboration</a></li>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#variants">Variants</a></li>
+          <li><a href="#collaboration">Collaboration</a></li>
+          <li><a href="#about-us">About us</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
 
         <!-- Desktop CTA -->
-        <a class="btn-primary" href="#">Try now</a>
+        <a class="btn-primary" href="#variants">Try now</a>
 
         <!-- Burger toggle -->
         <input type="checkbox" id="menu-toggle" class="menu-toggle" />
@@ -59,12 +217,12 @@
         <!-- Mobile dropdown -->
         <div class="mobile-nav">
           <ul>
-            <li><a href="#">Variants</a></li>
-            <li><a href="#">Collaboration</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#variants">Variants</a></li>
+            <li><a href="#collaboration">Collaboration</a></li>
+            <li><a href="#about-us">About us</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
-          <a class="btn-primary" href="#">Try now</a>
+          <a class="btn-primary" href="#variants">Try now</a>
         </div>
       </nav>
     </header>
@@ -87,13 +245,18 @@
       </div>
     </section>
 
-    <section class="variants-section" aria-label="Our variants">
+    <section class="variants-section" id="variants" aria-label="Our variants">
+      <h2 class="variants-heading">Our Variants</h2>
       <div class="variants-grid">
         <article class="variant-card">
           <div class="variant-image-wrap">
             <img
-              src="/assets/img/daser/apple_dase_mockup.jpg"
+              src="/assets/img/daser/apple_dase_mockup.webp"
               alt="Apple and Honey mead can"
+              width="800"
+              height="800"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <h3>Apple & Honey mead</h3>
@@ -107,8 +270,12 @@
         <article class="variant-card">
           <div class="variant-image-wrap">
             <img
-              src="/assets/img/daser/raspberry_dase_mockup.jpg"
+              src="/assets/img/daser/raspberry_dase_mockup.webp"
               alt="Raspberry and Honey mead can"
+              width="800"
+              height="800"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <h3>Raspberry & Honey mead</h3>
@@ -122,8 +289,12 @@
         <article class="variant-card">
           <div class="variant-image-wrap">
             <img
-              src="/assets/img/daser/coming_soon.jpg"
+              src="/assets/img/daser/coming_soon.webp"
               alt="Coming soon mead can"
+              width="800"
+              height="800"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <h3>Coming soon</h3>
@@ -227,8 +398,12 @@
         </div>
         <div class="collab-image-wrap">
           <img
-            src="/assets/img/stemningsbilleder/hyggestemning_billede.png"
+            src="/assets/img/stemningsbilleder/hyggestemning_billede.webp"
             alt="People enjoying Amber Bloom mead together"
+            width="1152"
+            height="896"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
@@ -237,9 +412,13 @@
     <section class="about-section" id="about-us" aria-label="About us">
       <img
         class="about-bg"
-        src="/assets/img/stemningsbilleder/glas_bord.png"
+        src="/assets/img/stemningsbilleder/glas_bord.webp"
         alt=""
         aria-hidden="true"
+        width="1152"
+        height="896"
+        loading="lazy"
+        decoding="async"
       />
       <div class="about-card">
         <span class="about-label">About us</span>
@@ -259,7 +438,7 @@
     <section class="stats-section" aria-label="Key facts">
       <div class="stats-grid">
         <div class="stat-item">
-          <span class="stat-number">12%</span>
+          <span class="stat-number">11%</span>
           <p>Alcohol by volume<br />Smooth and balanced strength</p>
         </div>
         <div class="stat-item">
@@ -300,47 +479,25 @@
           <h3>Social media</h3>
           <div class="social-links" aria-label="Social links">
             <a href="#" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M14 9h3V6h-3c-2.4 0-4 1.6-4 4v2H8v3h2v5h3v-5h3l1-3h-4v-2c0-.7.3-1 1-1z"
-                />
-              </svg>
+              <i class="fa-brands fa-facebook"></i>
             </a>
             <a href="#" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect
-                  x="4"
-                  y="4"
-                  width="16"
-                  height="16"
-                  rx="4"
-                  ry="4"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="4"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <circle cx="17.2" cy="6.8" r="1.2" />
-              </svg>
+              <i class="fa-brands fa-instagram"></i>
             </a>
             <a href="#" aria-label="X">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M5 5h4l3 4 3-4h4l-5 7 5 7h-4l-3-4-3 4H5l5-7-5-7z" />
+              <svg
+                class="icon-x"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="currentColor"
+              >
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.165-6.754-5.908 6.754h-3.31l7.73-8.835L.424 2.25h6.7l4.68 6.188 5.64-6.188zM17.05 19.35h2.212L6.826 4.556H4.54L17.05 19.35z"
+                />
               </svg>
             </a>
             <a href="#" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M6.5 9H3.8v11h2.7V9zm.2-3.4c0 .9-.7 1.6-1.6 1.6-.9 0-1.6-.7-1.6-1.6 0-.9.7-1.6 1.6-1.6.9 0 1.6.7 1.6 1.6zM20.2 13.7V20h-2.7v-5.8c0-1.4-.5-2.3-1.8-2.3-1 0-1.5.6-1.8 1.3-.1.2-.1.6-.1.9V20h-2.7s0-9.6 0-10.6h2.7V11c.4-.6 1.1-1.5 2.7-1.5 2 0 3.7 1.3 3.7 4.2z"
-                />
-              </svg>
+              <i class="fa-brands fa-linkedin"></i>
             </a>
           </div>
         </div>
@@ -359,6 +516,11 @@
         </div>
       </div>
     </footer>
+
+    <button class="back-to-top" type="button" aria-label="Scroll back to top">
+      ↑
+    </button>
+
     <script type="module" src="/assets/js/main.js"></script>
   </body>
 </html>

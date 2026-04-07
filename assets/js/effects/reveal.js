@@ -5,7 +5,6 @@ const revealSelectors = [
   ".about-card",
   ".stat-item",
   ".footer-main",
-  ".footer-bottom",
 ];
 
 export function initReveal(prefersReducedMotion) {
