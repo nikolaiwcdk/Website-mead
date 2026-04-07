@@ -25,5 +25,115 @@
     <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
     <link rel="manifest" href="assets/favicon/site.webmanifest" />
   </head>
-  <body></body>
+  <body>
+    <header class="site-header">
+      <nav class="nav-wrap">
+        <!-- Logo -->
+        <a href="/" class="brand">
+          <img
+            class="brand-logo"
+            src="/assets/img/logo/Logo_RGB_Logo-type_venstrer_navbar.svg"
+            alt="Amber Bloom logo"
+          />
+        </a>
+
+        <!-- Desktop links -->
+        <ul class="main-nav">
+          <li><a href="#">Variants</a></li>
+          <li><a href="#">Collaboration</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+
+        <!-- Desktop CTA -->
+        <a class="btn-primary" href="#">Try now</a>
+
+        <!-- Burger toggle -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+        <label for="menu-toggle" class="burger-btn" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+
+        <!-- Mobile dropdown -->
+        <div class="mobile-nav">
+          <ul>
+            <li><a href="#">Variants</a></li>
+            <li><a href="#">Collaboration</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <a class="btn-primary" href="#">Try now</a>
+        </div>
+      </nav>
+    </header>
+    <section class="hero">
+      <video autoplay muted loop playsinline>
+        <source
+          src="/assets/video/Hjemmeside_video_1920x1080px.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="hero-content">
+        <h1>Made for cozy moments, not heavy drinks</h1>
+        <p>A modern mead that feels light, fresh and easy to enjoy.</p>
+        <div class="hero-cta">
+          <a class="hero-btn-primary" href="#">Try Amber Bloom</a>
+          <a href="#" class="hero-btn-secondary"><span>Learn More</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="variants-section" aria-label="Our variants">
+      <div class="variants-grid">
+        <article class="variant-card">
+          <div class="variant-image-wrap">
+            <img
+              src="/assets/img/daser/apple_dase_mockup.jpg"
+              alt="Apple and Honey mead can"
+            />
+          </div>
+          <h3>Apple & Honey mead</h3>
+          <p>
+            A fresh and fruity mead with soft honey notes and a smooth finish.
+            Made for cozy moments and easy enjoyment.
+          </p>
+          <a href="#" class="variant-btn">Learn More</a>
+        </article>
+
+        <article class="variant-card">
+          <div class="variant-image-wrap">
+            <img
+              src="/assets/img/daser/raspberry_dase_mockup.jpg"
+              alt="Raspberry and Honey mead can"
+            />
+          </div>
+          <h3>Raspberry & Honey mead</h3>
+          <p>
+            A light and fruity mead with soft raspberry notes and a smooth
+            finish. Perfect for cozy moments and easy enjoyment.
+          </p>
+          <a href="#" class="variant-btn">Learn More</a>
+        </article>
+
+        <article class="variant-card">
+          <div class="variant-image-wrap">
+            <img
+              src="/assets/img/daser/coming_soon.jpg"
+              alt="Coming soon mead can"
+            />
+          </div>
+          <h3>Coming soon</h3>
+          <p>
+            A new flavor is on the way. Crafted for cozy moments and easy
+            enjoyment.
+          </p>
+          <a href="#" class="variant-btn">Notify Me</a>
+        </article>
+      </div>
+    </section>
+  </body>
 </html>
