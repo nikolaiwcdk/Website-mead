@@ -238,14 +238,21 @@
         </div>
       </nav>
     </header>
-    <section class="hero">
-      <video autoplay muted loop playsinline>
-        <source
-          src="assets/video/Hjemmeside_video_1920x1080px.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
+    <section class="hero" data-hero-fluid>
+      <div class="hero-media">
+        <video autoplay muted loop playsinline>
+          <source
+            src="/assets/video/Hjemmeside_video_1920x1080px.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div class="hero-fluid-layer" aria-hidden="true">
+          <span class="hero-fluid-orb hero-fluid-orb-primary"></span>
+          <span class="hero-fluid-orb hero-fluid-orb-secondary"></span>
+          <span class="hero-fluid-orb hero-fluid-orb-accent"></span>
+        </div>
+      </div>
 
       <div class="hero-content">
         <h1>Made for cozy moments, not heavy drinks</h1>

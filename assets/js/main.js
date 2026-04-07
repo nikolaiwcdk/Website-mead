@@ -1,5 +1,7 @@
 import { initReveal } from "./effects/reveal.js";
 import { initStatsCounter } from "./effects/stats-counter.js";
+import { initHeroFluid } from "./effects/hero-fluid.js";
+import { initVariantsLift } from "./effects/variants-lift.js";
 import { initSmoothScroll } from "./navigation/smooth-scroll.js";
 import { initBackToTop } from "./navigation/back-to-top.js";
 import { initAgeVerification } from "./navigation/age-verification.js";
@@ -10,6 +12,8 @@ const prefersReducedMotion = window.matchMedia(
 
 document.addEventListener("DOMContentLoaded", () => {
   initAgeVerification();
+  initHeroFluid(prefersReducedMotion);
+  initVariantsLift(prefersReducedMotion);
   initReveal(prefersReducedMotion);
   initStatsCounter(prefersReducedMotion);
   initSmoothScroll(prefersReducedMotion);
