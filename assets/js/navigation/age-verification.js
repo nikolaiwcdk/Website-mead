@@ -7,6 +7,20 @@ export function initAgeVerification() {
   const body = document.body;
   const root = document.documentElement;
   const LOCK_CLASS = "age-gate-locked";
+  const getStoredValue = (key) => {
+    try {
+      return localStorage.getItem(key);
+    } catch {
+      return null;
+    }
+  };
+  const setStoredValue = (key, value) => {
+    try {
+      localStorage.setItem(key, value);
+    } catch {
+      // Ignore storage errors and continue with an in-memory session only.
+    }
+  };
 
   if (!modal || !form || !errorMessage || !birthdateInput || !body) {
     return;
@@ -27,7 +41,7 @@ export function initAgeVerification() {
   };
 
   const enforceGate = () => {
-    const verified = localStorage.getItem("ageVerified") === "true";
+    const verified = getStoredValue("ageVerified") === "true";
     if (verified) {
       return;
     }
@@ -45,7 +59,7 @@ export function initAgeVerification() {
   };
 
   // Check if user has already verified age
-  const isAgeVerified = localStorage.getItem("ageVerified") === "true";
+  const isAgeVerified = getStoredValue("ageVerified") === "true";
 
   if (isAgeVerified) {
     setGateState(true);
@@ -106,8 +120,8 @@ export function initAgeVerification() {
 
     if (age >= 18) {
       // Age verified - store in localStorage
-      localStorage.setItem("ageVerified", "true");
-      localStorage.setItem("ageVerifiedDate", today.toISOString());
+      setStoredValue("ageVerified", "true");
+      setStoredValue("ageVerifiedDate", today.toISOString());
 
       // Unlock site
       setGateState(true);
