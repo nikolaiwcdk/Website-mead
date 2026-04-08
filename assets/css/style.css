@@ -383,6 +383,7 @@ body.age-gate-locked #age-verification-modal {
 }
 
 .age-error-message {
+  display: none;
   color: #b42318;
   font-size: 0.9rem;
   text-align: center;
