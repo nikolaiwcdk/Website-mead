@@ -19,7 +19,6 @@
   --social-text-hover: #ffffff;
   --social-icon-size: 40px;
   --social-icon-inner-size-svg: 22px;
-  --social-icon-inner-size-fa: 20px;
   --social-gap: 12px;
   --social-radius: var(--radius-sm);
   --social-shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.18);
@@ -1646,11 +1645,6 @@ body.age-gate-locked #age-verification-modal {
   transition: transform var(--transition-timing);
 }
 
-.social-links i {
-  font-size: var(--social-icon-inner-size-fa);
-  transition: transform var(--transition-timing);
-}
-
 .social-links a:hover,
 .social-links a:focus-visible {
   background: var(--social-bg-hover);
@@ -1662,11 +1656,6 @@ body.age-gate-locked #age-verification-modal {
 .social-links a:hover svg,
 .social-links a:focus-visible svg {
   transform: scale(1.05);
-}
-
-.social-links a:hover i,
-.social-links a:focus-visible i {
-  transform: scale(1.1);
 }
 
 .social-links a:active {
