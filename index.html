@@ -94,19 +94,17 @@
       }
     </script>
 
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/print.css" media="print" />
+    <link rel="preload" href="assets/css/style.css" as="style" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="assets/css/style.css"
+      media="print"
+      onload="this.media = 'all'"
     />
     <noscript>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      />
+      <link rel="stylesheet" href="assets/css/style.css" />
     </noscript>
+    <link rel="stylesheet" href="assets/css/print.css" media="print" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -137,45 +135,76 @@
       aria-modal="true"
     >
       <div class="age-modal-content">
-        <h2 id="age-modal-title">Age Verification</h2>
-        <p>
-          You must be 18 or older to enter this site. Amber Bloom contains
-          alcohol.
-        </p>
-        <form id="age-verification-form" class="age-form">
-          <label for="birthdate">Enter your date of birth:</label>
-          <input
-            type="date"
-            id="birthdate"
-            name="birthdate"
-            required
-            aria-required="true"
-          />
-          <div class="age-checkbox-group">
-            <label class="age-checkbox-label">
-              <input
-                type="checkbox"
-                id="accept-terms"
-                name="accept-terms"
-                required
-              />
-              I agree to the <a href="#" class="age-link">Terms of Service</a>
-            </label>
-            <label class="age-checkbox-label">
-              <input
-                type="checkbox"
-                id="accept-privacy"
-                name="accept-privacy"
-                required
-              />
-              I agree to the <a href="#" class="age-link">Privacy Policy</a>
-            </label>
-          </div>
-          <button type="submit" class="age-btn-verify">Verify Age</button>
-        </form>
+        <img
+          class="age-gate-brand"
+          src="/assets/img/logo/Logo_RGB_Logo-type_venstrer_hvid_ny.svg"
+          alt="Amber Bloom"
+          width="369"
+          height="170"
+        />
+        <h2 id="age-modal-title">Are you 18 years or older?</h2>
+        <p>Amber Bloom contains alcohol. You must be 18+ to continue.</p>
+        <div class="age-actions" role="group" aria-label="Age confirmation">
+          <button
+            type="button"
+            class="age-btn age-btn-secondary"
+            id="age-deny-btn"
+          >
+            Not yet
+          </button>
+          <button
+            type="button"
+            class="age-btn age-btn-primary"
+            id="age-confirm-btn"
+          >
+            Yes, I am 18+
+          </button>
+        </div>
+        <label class="age-remember" for="age-remember-device">
+          <input type="checkbox" id="age-remember-device" checked />
+          Remember me on this device
+        </label>
         <p class="age-error-message" id="age-error" style="display: none">
-          You must be 18 or older to enter.
+          You must be 18 years or older to enter.
         </p>
+      </div>
+
+      <div class="age-cookie-bar" role="group" aria-label="Cookie preferences">
+        <div class="age-cookie-copy">
+          <p class="age-cookie-title">Cookie settings</p>
+          <p class="age-cookie-text">
+            With your consent, we use cookies to improve functionality,
+            personalize content, and measure traffic. You can change your choice
+            at any time.
+          </p>
+          <p class="age-cookie-links">
+            See our <a href="#" class="age-cookie-link">Cookie Notice</a> &
+            <a href="#" class="age-cookie-link">Privacy Notice</a>.
+          </p>
+        </div>
+        <div class="age-cookie-actions">
+          <button
+            type="button"
+            class="age-cookie-btn age-cookie-btn-primary"
+            id="age-cookie-allow-btn"
+          >
+            Allow all
+          </button>
+          <button
+            type="button"
+            class="age-cookie-btn age-cookie-btn-secondary"
+            id="age-cookie-reject-btn"
+          >
+            Reject optional
+          </button>
+          <button
+            type="button"
+            class="age-cookie-btn age-cookie-btn-tertiary"
+            id="age-cookie-manage-btn"
+          >
+            Manage cookies
+          </button>
+        </div>
       </div>
     </div>
 
@@ -187,6 +216,8 @@
             class="brand-logo"
             src="assets/img/logo/Logo_RGB_Logo-type_venstrer_navbar.svg"
             alt="Amber Bloom logo"
+            width="369"
+            height="170"
           />
         </a>
 
@@ -464,6 +495,8 @@
           <img
             src="assets/img/logo/Logo_RGB_Logo-type_venstrer_navbar.svg"
             alt="Amber Bloom"
+            width="369"
+            height="170"
           />
         </a>
 
@@ -481,10 +514,21 @@
           <h3>Social media</h3>
           <div class="social-links" aria-label="Social links">
             <a href="#" aria-label="Facebook">
-              <i class="fa-brands fa-facebook"></i>
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                <path
+                  d="M22.675 0h-21.35C.595 0 0 .595 0 1.326v21.348C0 23.405.595 24 1.326 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24h-1.918c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622H16.56V24h6.115C23.405 24 24 23.405 24 22.674V1.326C24 .595 23.405 0 22.675 0z"
+                />
+              </svg>
             </a>
             <a href="#" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                <path
+                  d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.75a4 4 0 0 0-4 4v8.5a4 4 0 0 0 4 4h8.5a4 4 0 0 0 4-4v-8.5a4 4 0 0 0-4-4h-8.5z"
+                />
+                <path
+                  d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.75a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5zM17.5 6.2a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6z"
+                />
+              </svg>
             </a>
             <a href="#" aria-label="X">
               <svg
@@ -499,7 +543,11 @@
               </svg>
             </a>
             <a href="#" aria-label="LinkedIn">
-              <i class="fa-brands fa-linkedin"></i>
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                <path
+                  d="M4.98 3.5A2.49 2.49 0 1 0 5 8.48 2.49 2.49 0 0 0 4.98 3.5zM3 9h4v12H3V9zm7 0h3.83v1.64h.05c.53-1 1.84-2.06 3.79-2.06C21.5 8.58 23 10.82 23 14.2V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21h-4V9z"
+                />
+              </svg>
             </a>
           </div>
         </div>

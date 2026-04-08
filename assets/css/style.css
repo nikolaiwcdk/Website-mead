@@ -95,12 +95,12 @@ body.age-gate-locked #age-verification-modal {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: #2f2d2b;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  padding: var(--spacing-lg);
+  padding: clamp(16px, 3vw, 28px);
 }
 
 .age-modal.hidden {
@@ -108,13 +108,31 @@ body.age-gate-locked #age-verification-modal {
 }
 
 .age-modal-content {
-  background: var(--BG-color);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
-  max-width: 480px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: clamp(12px, 3vw, 28px);
+  max-width: 920px;
   width: 100%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  box-shadow: none;
   animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom: 110px;
+  transition:
+    filter 0.24s ease,
+    opacity 0.24s ease;
+}
+
+.age-modal.cookie-choice-required .age-modal-content {
+  filter: blur(2px);
+  opacity: 0.55;
+}
+
+.age-gate-brand {
+  width: min(160px, 42%);
+  height: auto;
+  display: block;
+  margin: 0 auto 18px;
 }
 
 @keyframes slideUp {
@@ -128,116 +146,281 @@ body.age-gate-locked #age-verification-modal {
   }
 }
 
-.age-modal h2 {
-  font-size: clamp(1.5rem, 2vw, 2rem);
-  color: var(--text-color-secondary);
-  margin-bottom: var(--spacing-md);
+.age-modal-content h2 {
+  font-size: clamp(2.5rem, 5.5vw, 5.1rem);
+  line-height: 1.02;
+  color: #f8f5ef;
+  max-width: 12ch;
+  margin: 0 auto var(--spacing-sm);
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
-.age-modal p {
-  color: var(--text-color);
+.age-modal-content > p {
+  color: rgba(248, 245, 239, 0.92);
+  max-width: 34ch;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: var(--spacing-lg);
-  line-height: 1.5;
+  line-height: 1.25;
+  font-size: clamp(1.25rem, 2.1vw, 2rem);
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
 }
 
-.age-form {
+.age-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 220px));
+  gap: var(--spacing-sm);
+  width: min(520px, 100%);
+  margin: 0 auto;
+}
+
+.age-cookie-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: none;
+  width: 100%;
+  max-width: none;
+  padding: 16px 24px;
+  border: 1px solid rgba(73, 63, 47, 0.16);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 0;
+  background: var(--BG-color);
+  box-shadow: 0 14px 28px rgba(22, 16, 11, 0.18);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--spacing-lg);
+  align-items: center;
+  transition:
+    opacity 0.24s ease,
+    transform 0.24s ease,
+    visibility 0.24s ease;
+}
+
+.age-modal.cookie-choice-complete .age-cookie-bar {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(14px);
+}
+
+.age-modal.cookie-choice-complete .age-modal-content {
+  margin-bottom: 24px;
+}
+
+.age-cookie-copy {
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  align-items: flex-start;
+  gap: 8px;
 }
 
-.age-form label {
-  font-weight: 600;
+.age-modal .age-cookie-title {
+  margin: 0;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+  width: 100%;
+  text-align: left;
   color: var(--text-color-secondary);
-  font-size: 0.95rem;
-}
-
-.age-form input[type="date"] {
-  padding: var(--spacing-md);
-  border: 2px solid var(--text-color);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-family);
-  font-size: 1rem;
-  color: var(--text-color-secondary);
-  background: var(--BG-color-secondary);
-  transition:
-    border-color var(--transition-ease),
-    box-shadow var(--transition-ease);
-}
-
-.age-form input[type="date"]:focus {
-  outline: none;
-  border-color: var(--primary-button-color);
-  box-shadow: 0 0 0 3px rgba(232, 188, 38, 0.1);
-}
-
-.age-btn-verify {
-  padding: var(--spacing-md) var(--spacing-lg);
-  background: var(--primary-button-color);
-  color: var(--text-color-secondary);
-  border: none;
-  border-radius: var(--radius-sm);
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
   font-weight: 700;
+}
+
+.age-modal .age-cookie-text {
+  margin: 0;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+  width: 100%;
+  color: var(--text-color);
+  font-size: 0.97rem;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.age-modal .age-cookie-links {
+  margin: 0;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+  width: 100%;
+  color: var(--text-color);
+  font-size: 0.97rem;
+  text-align: left;
+}
+
+.age-cookie-link {
+  color: var(--text-color-secondary);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.age-cookie-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  min-width: 150px;
+}
+
+.age-cookie-btn {
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid rgba(47, 36, 25, 0.16);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--text-color-secondary);
   font-family: var(--font-family);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition:
+    transform var(--transition-timing),
+    box-shadow var(--transition-ease),
+    border-color var(--transition-ease),
+    background-color var(--transition-ease),
+    color var(--transition-ease);
+}
+
+.age-cookie-btn-primary {
+  background: linear-gradient(180deg, #f2cf43 0%, #dfb417 52%, #c99f0f 100%);
+  color: #2f2419;
+  border-color: rgba(47, 36, 25, 0.24);
+}
+
+.age-cookie-btn-secondary {
+  background: #fff;
+  color: var(--text-color-secondary);
+}
+
+.age-cookie-btn-tertiary {
+  background: rgba(255, 255, 255, 0.45);
+  color: var(--text-color-secondary);
+}
+
+.age-cookie-btn.is-selected {
+  border-color: rgba(201, 159, 15, 0.9);
+  box-shadow: 0 0 0 2px rgba(232, 188, 38, 0.24) inset;
+}
+
+.age-cookie-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(22, 16, 11, 0.16);
+}
+
+.age-cookie-btn-primary:hover {
+  border-color: rgba(47, 36, 25, 0.28);
+}
+
+.age-btn {
+  min-height: 46px;
+  padding: 11px var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(47, 36, 25, 0.18);
+  font-family: var(--font-family);
+  font-size: clamp(0.95rem, 1.2vw, 1.04rem);
+  font-weight: 700;
   cursor: pointer;
   transition:
     transform var(--transition-timing),
     box-shadow var(--transition-ease),
-    background-color var(--transition-ease);
+    background-color var(--transition-ease),
+    border-color var(--transition-ease),
+    color var(--transition-ease);
 }
 
-.age-btn-verify:hover {
+.age-btn-primary {
+  background: linear-gradient(180deg, #f2cf43 0%, #dfb417 52%, #c99f0f 100%);
+  color: #2f2419;
+}
+
+.age-btn-secondary {
+  background: #fff;
+  color: var(--text-color-secondary);
+}
+
+.age-remember {
+  margin-top: var(--spacing-md);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: rgba(248, 245, 239, 0.92);
+  cursor: pointer;
+}
+
+.age-remember input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary-button-color);
+  cursor: pointer;
+}
+
+.age-remember input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.age-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(77, 63, 47, 0.2);
-  background: #d9af1f;
+  box-shadow: 0 10px 20px rgba(22, 16, 11, 0.2);
 }
 
-.age-btn-verify:active {
+.age-btn:active {
   transform: translateY(0);
 }
 
+.age-btn:disabled,
+.age-btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .age-error-message {
-  color: #d32f2f;
+  color: #b42318;
   font-size: 0.9rem;
   text-align: center;
   margin-top: var(--spacing-md);
   font-weight: 600;
 }
 
-.age-checkbox-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-}
+@media (max-width: 640px) {
+  .age-modal-content {
+    padding: 18px 14px;
+    margin-bottom: 168px;
+  }
 
-.age-checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  font-size: 0.9rem;
-  color: var(--text-color);
-  cursor: pointer;
-}
+  .age-modal h2 {
+    font-size: clamp(2rem, 11vw, 2.8rem);
+  }
 
-.age-checkbox-label input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  min-width: 18px;
-  accent-color: var(--primary-button-color);
-  cursor: pointer;
-}
+  .age-modal p {
+    font-size: 1.08rem;
+  }
 
-.age-link {
-  color: var(--text-color-secondary);
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: opacity var(--transition-ease);
-}
+  .age-actions {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
 
-.age-link:hover {
-  opacity: 0.7;
+  .age-cookie-actions {
+    grid-template-columns: 1fr;
+    min-width: 0;
+  }
+
+  .age-cookie-bar {
+    bottom: 0;
+    width: 100%;
+    padding: 12px;
+    grid-template-columns: 1fr;
+  }
 }
 
 .reveal-pending {
@@ -1242,6 +1425,10 @@ body.age-gate-locked #age-verification-modal {
   min-height: 100vh;
   overflow: hidden;
   background: #15110d;
+  background-image: url("../img/stemningsbilleder/glas_bord.webp");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   padding: 80px 24px;
 }
 
@@ -1254,6 +1441,16 @@ body.age-gate-locked #age-verification-modal {
   object-position: center;
   display: block;
   filter: brightness(0.55);
+}
+
+.about-bg {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .about-section {
+    background-attachment: scroll;
+  }
 }
 
 .about-card {
@@ -1496,7 +1693,7 @@ body.age-gate-locked #age-verification-modal {
 
 .footer-bottom p,
 .footer-legal a {
-  color: #7a7a7a;
+  color: #595959;
   font-size: 0.9rem;
   text-decoration: none;
 }
