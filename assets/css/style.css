@@ -288,8 +288,13 @@ body.age-gate-locked #age-verification-modal {
 
 .age-cookie-btn-primary {
   background: linear-gradient(180deg, #f2cf43 0%, #dfb417 52%, #c99f0f 100%);
+  background-size: 100% 180%;
+  background-position: 0% 0%;
   color: #2f2419;
-  border-color: rgba(47, 36, 25, 0.24);
+  border-color: transparent;
+  box-shadow:
+    0 10px 22px rgba(22, 16, 11, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
 }
 
 .age-cookie-btn-secondary {
@@ -312,8 +317,19 @@ body.age-gate-locked #age-verification-modal {
   box-shadow: 0 8px 16px rgba(22, 16, 11, 0.16);
 }
 
-.age-cookie-btn-primary:hover {
-  border-color: rgba(47, 36, 25, 0.28);
+.age-cookie-btn-primary:hover,
+.age-cookie-btn-primary:focus-visible {
+  background-position: 0% 100%;
+  border-color: transparent;
+  box-shadow:
+    0 12px 24px rgba(22, 16, 11, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+.age-cookie-btn-primary:active {
+  box-shadow:
+    0 8px 18px rgba(22, 16, 11, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
 .age-btn {
