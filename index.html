@@ -129,6 +129,8 @@
     <link rel="manifest" href="assets/favicon/site.webmanifest" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <!-- Age Verification Modal -->
     <div
       id="age-verification-modal"
@@ -212,7 +214,7 @@
     </div>
 
     <header class="site-header">
-      <nav class="nav-wrap">
+      <nav class="nav-wrap" aria-label="Main navigation">
         <!-- Logo -->
         <a href="./" class="brand">
           <img
@@ -236,15 +238,30 @@
         <a class="btn-primary" href="#variants">Try now</a>
 
         <!-- Burger toggle -->
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-        <label for="menu-toggle" class="burger-btn" aria-label="Open menu">
+        <input
+          type="checkbox"
+          id="menu-toggle"
+          class="menu-toggle"
+          aria-hidden="true"
+          tabindex="-1"
+        />
+        <label
+          for="menu-toggle"
+          class="burger-btn"
+          role="button"
+          tabindex="0"
+          aria-label="Open menu"
+          aria-controls="mobile-nav"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Toggle menu</span>
           <span></span>
           <span></span>
           <span></span>
         </label>
 
         <!-- Mobile dropdown -->
-        <div class="mobile-nav">
+        <div class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
           <ul>
             <li><a href="#variants">Variants</a></li>
             <li><a href="#collaboration">Collaboration</a></li>
@@ -255,242 +272,251 @@
         </div>
       </nav>
     </header>
-    <section class="hero" data-hero-fluid>
-      <div class="hero-media">
-        <video autoplay muted loop playsinline>
-          <source
-            src="assets/video/Hjemmeside_video_1920x1080px.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-        <div class="hero-fluid-layer" aria-hidden="true">
-          <span class="hero-fluid-orb hero-fluid-orb-primary"></span>
-          <span class="hero-fluid-orb hero-fluid-orb-secondary"></span>
-          <span class="hero-fluid-orb hero-fluid-orb-accent"></span>
+    <main id="main-content">
+      <section class="hero" data-hero-fluid>
+        <div class="hero-media">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="assets/img/stemningsbilleder/hyggestemning_billede.webp"
+          >
+            <source
+              src="assets/video/Hjemmeside_video_1920x1080px.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+          <div class="hero-fluid-layer" aria-hidden="true">
+            <span class="hero-fluid-orb hero-fluid-orb-primary"></span>
+            <span class="hero-fluid-orb hero-fluid-orb-secondary"></span>
+            <span class="hero-fluid-orb hero-fluid-orb-accent"></span>
+          </div>
         </div>
-      </div>
 
-      <div class="hero-content">
-        <h1>Made for cozy moments, not heavy drinks</h1>
-        <p>A modern mead that feels light, fresh and easy to enjoy.</p>
-        <div class="hero-cta">
-          <a class="hero-btn-primary" href="#">Try Amber Bloom</a>
-          <a href="#" class="hero-btn-secondary"><span>Learn More</span></a>
+        <div class="hero-content">
+          <h1>Made for cozy moments, not heavy drinks</h1>
+          <p>A modern mead that feels light, fresh and easy to enjoy.</p>
+          <div class="hero-cta">
+            <a class="hero-btn-primary" href="#">Try Amber Bloom</a>
+            <a href="#" class="hero-btn-secondary"><span>Learn More</span></a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="variants-section" id="variants" aria-label="Our variants">
-      <h2 class="variants-heading">Our Variants</h2>
-      <div class="variants-grid">
-        <article class="variant-card">
-          <div class="variant-image-wrap">
-            <img
-              src="assets/img/daser/apple_dase_mockup.webp"
-              alt="Apple and Honey mead can"
-              width="800"
-              height="800"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <h3>Apple & Honey mead</h3>
-          <p>
-            A fresh and fruity mead with soft honey notes and a smooth finish.
-            Made for cozy moments and easy enjoyment.
-          </p>
-          <a href="#" class="variant-btn">Learn More</a>
-        </article>
+      <section class="variants-section" id="variants" aria-label="Our variants">
+        <h2 class="variants-heading">Our Variants</h2>
+        <div class="variants-grid">
+          <article class="variant-card">
+            <div class="variant-image-wrap">
+              <img
+                src="assets/img/daser/apple_dase_mockup.webp"
+                alt="Apple and Honey mead can"
+                width="800"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Apple & Honey mead</h3>
+            <p>
+              A fresh and fruity mead with soft honey notes and a smooth finish.
+              Made for cozy moments and easy enjoyment.
+            </p>
+            <a href="#" class="variant-btn">Learn More</a>
+          </article>
 
-        <article class="variant-card">
-          <div class="variant-image-wrap">
-            <img
-              src="assets/img/daser/raspberry_dase_mockup.webp"
-              alt="Raspberry and Honey mead can"
-              width="800"
-              height="800"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <h3>Raspberry & Honey mead</h3>
-          <p>
-            A light and fruity mead with soft raspberry notes and a smooth
-            finish. Perfect for cozy moments and easy enjoyment.
-          </p>
-          <a href="#" class="variant-btn">Learn More</a>
-        </article>
+          <article class="variant-card">
+            <div class="variant-image-wrap">
+              <img
+                src="assets/img/daser/raspberry_dase_mockup.webp"
+                alt="Raspberry and Honey mead can"
+                width="800"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Raspberry & Honey mead</h3>
+            <p>
+              A light and fruity mead with soft raspberry notes and a smooth
+              finish. Perfect for cozy moments and easy enjoyment.
+            </p>
+            <a href="#" class="variant-btn">Learn More</a>
+          </article>
 
-        <article class="variant-card">
-          <div class="variant-image-wrap">
-            <img
-              src="assets/img/daser/coming_soon.webp"
-              alt="Coming soon mead can"
-              width="800"
-              height="800"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <h3>Coming soon</h3>
-          <p>
-            A new flavor is on the way. Crafted for cozy moments and easy
-            enjoyment.
-          </p>
-          <a href="#" class="variant-btn">Notify Me</a>
-        </article>
-      </div>
-    </section>
+          <article class="variant-card">
+            <div class="variant-image-wrap">
+              <img
+                src="assets/img/daser/coming_soon.webp"
+                alt="Coming soon mead can"
+                width="800"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Coming soon</h3>
+            <p>
+              A new flavor is on the way. Crafted for cozy moments and easy
+              enjoyment.
+            </p>
+            <a href="#" class="variant-btn">Notify Me</a>
+          </article>
+        </div>
+      </section>
 
-    <section
-      class="collab-section"
-      id="collaboration"
-      aria-label="Collaboration"
-    >
-      <div class="collab-card">
-        <div class="collab-text">
-          <span class="collab-label">Collaboration</span>
-          <h2>Crafted in<br />collaboration</h2>
-          <p>
-            We've teamed up with local creators to bring a new perspective to
-            modern mead. Together, we focus on flavor, design and creating
-            moments that feel warm, social, and easy to enjoy.
-          </p>
-          <div class="collab-partners">
-            <div class="collab-partner">
-              <svg
-                width="36"
-                height="36"
-                viewBox="0 0 36 36"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <rect
-                  x="4"
-                  y="14"
-                  width="28"
-                  height="18"
-                  rx="2"
-                  stroke="#1a1a1a"
-                  stroke-width="1.8"
+      <section
+        class="collab-section"
+        id="collaboration"
+        aria-label="Collaboration"
+      >
+        <div class="collab-card">
+          <div class="collab-text">
+            <span class="collab-label">Collaboration</span>
+            <h2>Crafted in<br />collaboration</h2>
+            <p>
+              We've teamed up with local creators to bring a new perspective to
+              modern mead. Together, we focus on flavor, design and creating
+              moments that feel warm, social, and easy to enjoy.
+            </p>
+            <div class="collab-partners">
+              <div class="collab-partner">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
                   fill="none"
-                />
-                <path
-                  d="M10 14V10a8 8 0 0 1 16 0v4"
-                  stroke="#1a1a1a"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="4"
+                    y="14"
+                    width="28"
+                    height="18"
+                    rx="2"
+                    stroke="#1a1a1a"
+                    stroke-width="1.8"
+                    fill="none"
+                  />
+                  <path
+                    d="M10 14V10a8 8 0 0 1 16 0v4"
+                    stroke="#1a1a1a"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    fill="none"
+                  />
+                  <rect
+                    x="14"
+                    y="22"
+                    width="8"
+                    height="10"
+                    rx="1"
+                    stroke="#1a1a1a"
+                    stroke-width="1.6"
+                    fill="none"
+                  />
+                </svg>
+                <div>
+                  <p class="collab-partner-title">Local Brewery Partner</p>
+                  <p class="collab-partner-name">Fanø Bryghus</p>
+                </div>
+              </div>
+              <div class="collab-divider"></div>
+              <div class="collab-partner">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 36 36"
                   fill="none"
-                />
-                <rect
-                  x="14"
-                  y="22"
-                  width="8"
-                  height="10"
-                  rx="1"
-                  stroke="#1a1a1a"
-                  stroke-width="1.6"
-                  fill="none"
-                />
-              </svg>
-              <div>
-                <p class="collab-partner-title">Local Brewery Partner</p>
-                <p class="collab-partner-name">Fanø Bryghus</p>
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M24 6l6 6-16 16H8v-6L24 6z"
+                    stroke="#1a1a1a"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                    fill="none"
+                  />
+                  <path
+                    d="M20 10l6 6"
+                    stroke="#1a1a1a"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <div>
+                  <p class="collab-partner-title">Design Collaboration</p>
+                  <p class="collab-partner-name">Hansenberg</p>
+                </div>
               </div>
             </div>
-            <div class="collab-divider"></div>
-            <div class="collab-partner">
-              <svg
-                width="36"
-                height="36"
-                viewBox="0 0 36 36"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M24 6l6 6-16 16H8v-6L24 6z"
-                  stroke="#1a1a1a"
-                  stroke-width="1.8"
-                  stroke-linejoin="round"
-                  fill="none"
-                />
-                <path
-                  d="M20 10l6 6"
-                  stroke="#1a1a1a"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                />
-              </svg>
-              <div>
-                <p class="collab-partner-title">Design Collaboration</p>
-                <p class="collab-partner-name">Hansenberg</p>
-              </div>
-            </div>
+            <a href="#" class="collab-btn">Explore collaboration</a>
           </div>
-          <a href="#" class="collab-btn">Explore collaboration</a>
+          <div class="collab-image-wrap">
+            <img
+              src="assets/img/stemningsbilleder/hyggestemning_billede.webp"
+              alt="People enjoying Amber Bloom mead together"
+              width="1152"
+              height="896"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
-        <div class="collab-image-wrap">
-          <img
-            src="assets/img/stemningsbilleder/hyggestemning_billede.webp"
-            alt="People enjoying Amber Bloom mead together"
-            width="1152"
-            height="896"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="about-section" id="about-us" aria-label="About us">
-      <img
-        class="about-bg"
-        src="assets/img/stemningsbilleder/glas_bord.webp"
-        alt=""
-        aria-hidden="true"
-        width="1152"
-        height="896"
-        loading="lazy"
-        decoding="async"
-      />
-      <div class="about-card">
-        <span class="about-label">About us</span>
-        <h2>Our story</h2>
-        <p>
-          Amber Bloom was created to bring a lighter and more modern take on
-          mead. Inspired by cozy evenings, warm atmospheres and good company, we
-          craft drinks that feel easy to enjoy and made to share.
-        </p>
-        <p>
-          We believe mead can be refined, social and approachable — a drink that
-          fits naturally into calm moments and meaningful conversations.
-        </p>
-      </div>
-    </section>
+      <section class="about-section" id="about-us" aria-label="About us">
+        <img
+          class="about-bg"
+          src="assets/img/stemningsbilleder/glas_bord.webp"
+          alt=""
+          aria-hidden="true"
+          width="1152"
+          height="896"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="about-card">
+          <span class="about-label">About us</span>
+          <h2>Our story</h2>
+          <p>
+            Amber Bloom was created to bring a lighter and more modern take on
+            mead. Inspired by cozy evenings, warm atmospheres and good company,
+            we craft drinks that feel easy to enjoy and made to share.
+          </p>
+          <p>
+            We believe mead can be refined, social and approachable — a drink
+            that fits naturally into calm moments and meaningful conversations.
+          </p>
+        </div>
+      </section>
 
-    <section class="stats-section" aria-label="Key facts">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <span class="stat-number">11%</span>
-          <p>Alcohol by volume<br />Smooth and balanced strength</p>
+      <section class="stats-section" aria-label="Key facts">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">11%</span>
+            <p>Alcohol by volume<br />Smooth and balanced strength</p>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <p>Natural ingredients<br />No artificial additives</p>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">2</span>
+            <p>Signature variants<br />Crafted with care</p>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">2026</span>
+            <p>Founded<br />A fresh take on tradition</p>
+          </div>
         </div>
-        <div class="stat-item">
-          <span class="stat-number">100%</span>
-          <p>Natural ingredients<br />No artificial additives</p>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">2</span>
-          <p>Signature variants<br />Crafted with care</p>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">2026</span>
-          <p>Founded<br />A fresh take on tradition</p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer class="site-footer" id="contact" aria-label="Footer">
       <div class="footer-main">
